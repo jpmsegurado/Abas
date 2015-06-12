@@ -1,0 +1,71 @@
+<html ng-app="app">
+    
+    <meta charset="utf-8">
+
+    <head>
+        <!-- Bibliotecas -->
+        
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/angular/angular.js"></script>
+        <script src="js/angular/angular-ui-router.min.js"></script>
+        <script src="js/jquery-1.11.0.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/ngFx.min.js"></script>
+        
+        <!-- Config -->
+        <script src="js/app.js"></script>
+        <!-- Models -->
+        
+        <!-- Controllers -->
+        <script src="js/indexCtrl.js"></script>
+        
+        
+        <script>
+         $(document).ready(function(){
+            $('ul.tabs').tabs();
+          });
+        </script>
+        
+    </head>
+    
+    <body ng-controller="indexCtrl">
+        <div class="row">
+            
+            <div class="col-sm-3">
+                <div>
+                    <ul class="list-group">
+                        <li class="list-group-item pointer primary" ng-repeat="item in menu" ng-click="addAba(item)">{{item}}</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-sm-9">
+                
+                <div role="tabpanel">
+
+  
+                    <ul class="nav nav-tabs abas" role="tablist">
+                        <li  role="presentation " ng-class="{'active':tab == $index}" ng-repeat="aba in abas" ng-click="showTab($index)">
+                            <a class="pointer" aria-controls="home" class="pointer" ng-class="{'active':tab == $index}" role="tab" data-toggle="tab">
+                                {{aba.titulo}} 
+                                <span ng-click="removeAba($index)" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane" id="home" ng-repeat="aba in abas" ng-class="{'active':tab == $index}">
+                            tab {{aba.titulo}}
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+            
+        </div>
+    </body>
+    
+</html>
